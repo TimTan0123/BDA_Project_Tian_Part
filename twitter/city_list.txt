@@ -1,0 +1,241 @@
+US,40.714,-74.005,New York,NY
+US,34.052,-118.243,Los Angeles,CA
+US,41.850,-87.650,Chicago,IL
+US,29.763,-95.363,Houston,TX
+US,39.952,-75.163,Philadelphia,PA
+US,33.448,-112.074,Phoenix,AZ
+US,32.715,-117.157,San Diego,CA
+US,32.783,-96.806,Dallas,TX
+US,29.424,-98.493,San Antonio,TX
+US,42.331,-83.045,Detroit,MI
+US,37.339,-121.894,San Jose,CA
+US,39.768,-86.158,Indianapolis,IN
+US,37.774,-122.419,San Francisco,CA
+US,30.332,-81.655,Jacksonville,FL
+US,39.961,-82.998,Columbus,OH
+US,30.267,-97.743,Austin,TX
+US,39.290,-76.612,Baltimore,MD
+US,35.149,-90.048,Memphis,TN
+US,43.038,-87.906,Milwaukee,WI
+US,42.358,-71.059,Boston,MA
+US,38.895,-77.036,Washington,DC
+US,36.165,-86.784,Nashville,TN
+US,31.758,-106.486,El Paso,TX
+US,47.606,-122.332,Seattle,WA
+US,39.739,-104.984,Denver,CO
+US,35.227,-80.843,Charlotte,NC
+US,32.725,-97.320,Fort Worth,TX
+US,45.523,-122.676,Portland,OR
+US,35.467,-97.516,Oklahoma City,OK
+US,32.221,-110.926,Tucson,AZ
+US,29.954,-90.075,New Orleans,LA
+US,36.174,-115.137,Las Vegas,NV
+US,41.499,-81.695,Cleveland,OH
+US,33.766,-118.189,Long Beach,CA
+US,35.084,-106.651,Albuquerque,NM
+US,39.099,-94.578,Kansas City,MO
+US,36.747,-119.772,Fresno,CA
+US,36.852,-75.977,Virginia Beach,VA
+US,18.466,-66.105,San Juan,PR
+US,33.748,-84.387,Atlanta,GA
+US,38.581,-121.494,Sacramento,CA
+US,37.804,-122.270,Oakland,CA
+US,33.422,-111.822,Mesa,AZ
+US,36.153,-95.992,Tulsa,OK
+US,41.258,-95.937,Omaha,NE
+US,44.979,-93.263,Minneapolis,MN
+US,21.306,-157.858,Honolulu,HI
+US,25.774,-80.193,Miami,FL
+US,38.833,-104.821,Colorado Springs,CO
+US,38.627,-90.198,St. Louis,MO
+US,37.692,-97.337,Wichita,KS
+US,33.745,-117.867,Santa Ana,CA
+US,40.440,-79.995,Pittsburgh,PA
+US,32.735,-97.108,Arlington,TX
+US,39.162,-84.456,Cincinnati,OH
+US,33.835,-117.914,Anaheim,CA
+US,41.663,-83.555,Toledo,OH
+US,27.947,-82.458,Tampa,FL
+US,42.886,-78.878,Buffalo,NY
+US,44.944,-93.093,St. Paul,MN
+US,27.800,-97.396,Corpus Christi,TX
+US,39.729,-104.831,Aurora,CO
+US,35.772,-78.638,Raleigh,NC
+US,40.735,-74.172,Newark,NJ
+US,37.988,-84.477,Lexington,KY
+US,61.218,-149.900,Anchorage,AK
+US,38.254,-85.759,Louisville,KY
+US,33.953,-117.396,Riverside,CA
+US,27.771,-82.679,St. Petersburg,FL
+US,35.373,-119.018,Bakersfield,CA
+US,37.957,-121.290,Stockton,CA
+US,33.520,-86.802,Birmingham,AL
+US,40.728,-74.077,Jersey City,NJ
+US,36.846,-76.285,Norfolk,VA
+US,30.450,-91.154,Baton Rouge,LA
+US,25.857,-80.278,Hialeah,FL
+US,40.800,-96.666,Lincoln,NE
+US,36.072,-79.791,Greensboro,NC
+US,33.019,-96.698,Plano,TX
+US,43.154,-77.615,Rochester,NY
+US,33.538,-112.185,Glendale,AZ
+US,41.081,-81.519,Akron,OH
+US,32.912,-96.638,Garland,TX
+US,43.073,-89.401,Madison,WI
+US,41.130,-85.128,Fort Wayne,IN
+US,18.399,-66.156,Bayamon,PR
+US,37.548,-121.988,Fremont,CA
+US,33.509,-111.899,Scottsdale,AZ
+US,32.366,-86.299,Montgomery,AL
+US,32.525,-93.750,Shreveport,LA
+US,33.470,-81.974,Augusta,GA
+US,33.577,-101.855,Lubbock,TX
+US,36.819,-76.274,Chesapeake,VA
+US,30.694,-88.043,Mobile,AL
+US,41.600,-93.609,Des Moines,IA
+US,42.963,-85.668,Grand Rapids,MI
+US,37.553,-77.460,Richmond,VA
+US,40.931,-73.898,Yonkers,NY
+US,47.658,-117.426,Spokane,WA
+US,34.142,-118.255,Glendale,CA
+US,47.252,-122.444,Tacoma,WA
+US,32.814,-96.948,Irving,TX
+US,33.660,-117.999,Huntington Beach,CA
+US,37.639,-120.996,Modesto,CA
+US,35.994,-78.898,Durham,NC
+US,32.460,-84.987,Columbus,GA
+US,28.538,-81.379,Orlando,FL
+US,41.614,-116.203,Boise,ID
+US,36.099,-80.244,Winston-Salem,NC
+US,34.108,-117.289,San Bernardino,CA
+US,32.298,-90.184,Jackson,MS
+US,34.746,-92.289,Little Rock,AR
+US,40.760,-111.891,Salt Lake City,UT
+US,39.529,-119.813,Reno,NV
+US,36.978,-76.428,Newport News,VA
+US,33.306,-111.841,Chandler,AZ
+US,27.506,-99.507,Laredo,TX
+US,36.039,-114.981,Henderson,NV
+US,35.960,-83.920,Knoxville,TN
+US,35.221,-101.831,Amarillo,TX
+US,41.823,-71.412,Providence,RI
+US,32.640,-117.084,Chula Vista,CA
+US,42.262,-71.802,Worcester,MA
+US,34.197,-119.177,Oxnard,CA
+US,18.380,-65.957,Carolina,PR
+US,39.758,-84.191,Dayton,OH
+US,33.773,-117.941,Garden Grove,CA
+US,33.195,-117.379,Oceanside,CA
+US,33.414,-111.909,Tempe,AZ
+US,34.730,-86.586,Huntsville,AL
+US,34.063,-117.650,Ontario,CA
+US,35.045,-85.309,Chattanooga,TN
+US,18.011,-66.614,Ponce,PR
+US,26.122,-80.143,Fort Lauderdale,FL
+US,42.101,-72.589,Springfield,MA
+US,37.215,-93.298,Springfield,MO
+US,34.391,-118.543,Santa Clarita,CA
+US,36.677,-121.655,Salinas,CA
+US,30.438,-84.280,Tallahassee,FL
+US,42.271,-89.093,Rockford,IL
+US,34.055,-117.752,Pomona,CA
+US,40.916,-74.171,Paterson,NJ
+US,38.982,-94.670,Overland Park,KS
+US,38.440,-122.714,Santa Rosa,CA
+US,43.048,-76.147,Syracuse,NY
+US,39.114,-94.627,Kansas City,KS
+US,37.029,-76.345,Hampton,VA
+US,39.704,-105.081,Lakewood,CO
+US,45.638,-122.661,Vancouver,WA
+US,33.669,-117.823,Irvine,CA
+US,41.760,-88.320,Aurora,IL
+US,33.938,-117.231,Moreno Valley,CA
+US,29.691,-95.209,Pasadena,TX
+US,37.668,-122.080,Hayward,CA
+US,25.901,-97.497,Brownsville,TX
+US,41.167,-73.204,Bridgeport,CT
+US,26.011,-80.149,Hollywood,FL
+US,42.477,-83.027,Warren,MI
+US,33.835,-118.340,Torrance,CA
+US,44.052,-123.086,Eugene,OR
+US,26.003,-80.223,Pembroke Pines,FL
+US,44.942,-123.035,Salem,OR
+US,34.147,-118.144,Pasadena,CA
+US,33.119,-117.086,Escondido,CA
+US,37.368,-122.036,Sunnyvale,CA
+US,32.083,-81.099,Savannah,GA
+US,34.092,-117.435,Fontana,CA
+US,33.787,-117.853,Orange,CA
+US,41.785,-88.147,Naperville,IL
+US,38.804,-77.046,Alexandria,VA
+US,34.106,-117.593,Rancho Cucamonga,CA
+US,32.745,-96.997,Grand Prairie,TX
+US,33.870,-117.925,Fullerton,CA
+US,33.875,-117.566,Corona,CA
+US,43.012,-83.687,Flint,MI
+US,32.766,-96.599,Mesquite,TX
+US,42.580,-83.030,Sterling Heights,MI
+US,43.549,-96.700,Sioux Falls,SD
+US,41.308,-72.928,New Haven,CT
+US,39.048,-95.678,Topeka,KS
+US,37.977,-122.031,Concord,CA
+US,37.974,-87.555,Evansville,IN
+US,41.763,-72.685,Hartford,CT
+US,35.052,-78.878,Fayetteville,NC
+US,42.008,-91.644,Cedar Rapids,IA
+US,40.663,-74.210,Elizabeth,NJ
+US,42.732,-84.555,Lansing,MI
+US,34.698,-118.136,Lancaster,CA
+US,40.585,-105.084,Fort Collins,CO
+US,41.053,-73.538,Stamford,CT
+US,34.170,-118.837,Thousand Oaks,CA
+US,38.104,-122.256,Vallejo,CA
+US,34.579,-118.116,Palmdale,CA
+US,34.000,-81.034,Columbia,SC
+US,34.068,-118.027,El Monte,CA
+US,32.448,-99.733,Abilene,TX
+US,36.198,-115.117,North Las Vegas,NV
+US,42.270,-83.726,Ann Arbor,MI
+US,30.086,-94.101,Beaumont,TX
+US,31.549,-97.146,Waco,TX
+US,39.091,-94.415,Independence,MO
+US,40.693,-89.588,Peoria,IL
+US,33.961,-118.353,Inglewood,CA
+US,39.801,-89.643,Springfield,IL
+US,34.269,-118.781,Simi Valley,CA
+US,30.224,-92.019,Lafayette,LA
+US,33.352,-111.789,Gilbert,AZ
+US,32.953,-96.890,Carrollton,TX
+US,47.610,-122.200,Bellevue,WA
+US,40.691,-112.001,West Valley City,UT
+US,27.965,-82.800,Clearwater,FL
+US,33.641,-117.918,Costa Mesa,CA
+US,33.580,-112.237,Peoria,AZ
+US,41.683,-86.250,South Bend,IN
+US,41.558,-73.051,Waterbury,CT
+US,42.995,-71.454,Manchester,NH
+US,40.608,-75.490,Allentown,PA
+US,26.203,-98.230,McAllen,TX
+US,41.525,-88.081,Joliet,IL
+US,42.633,-71.316,Lowell,MA
+US,40.233,-111.658,Provo,UT
+US,34.068,-117.938,West Covina,CA
+US,33.913,-98.493,Wichita Falls,TX
+US,42.129,-80.085,Erie,PA
+US,37.705,-122.461,Daly City,CA
+US,36.529,-87.359,Clarksville,TN
+US,33.902,-118.081,Norwalk,CA
+US,41.593,-87.346,Gary,IN
+US,37.871,-122.272,Berkeley,CA
+US,37.354,-121.955,Santa Clara,CA
+US,44.519,-88.019,Green Bay,WI
+US,26.562,-81.949,Cape Coral,FL
+US,39.802,-105.087,Arvada,CO
+US,38.254,-104.609,Pueblo,CO
+US,33.960,-83.377,Athens,GA
+US,42.375,-71.105,Cambridge,MA
+US,39.836,-105.037,Westminster,CO
+US,34.278,-119.293,Ventura,CA
+US,36.835,-76.298,Portsmouth,VA
+US,42.368,-83.352,Livonia,MI
+US,34.180,-118.308,Burbank,CA
