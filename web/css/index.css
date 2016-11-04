@@ -1,0 +1,106 @@
+﻿#wrapper {
+
+}
+
+#left-wrapper {
+float:left;
+margin:0px 10px 0px 0px;
+width:250px
+}
+
+#place {
+background-color: #008200;
+background-image: url(../img/mid_bg.jpg);
+background-repeat: repeat-x;
+margin: 0px 0px 10px 0px;
+padding: 10px 10px 10px 10px;
+height: 100px;
+width: auto:
+}
+
+#restaurant {
+background-color: #008200;
+background-image: url(../img/mid_bg.jpg);
+background-repeat: repeat-x;
+margin: 0px 0px 10px 0px;
+padding: 10px 10px 10px 10px;
+height: 100px;
+width: auto:
+}
+
+#hotel {
+background-color: #008200;
+background-image: url(../img/mid_bg.jpg);
+background-repeat: repeat-x;
+margin: 0px 0px 10px 0px;
+padding: 10px 10px 10px 10px;
+height: 100px;
+width: auto:
+}
+
+.contents{
+background-color:white;
+padding:10px 10px 10px 10px;
+height:80px;
+width:auto;
+}
+
+#right-wrapper {
+float:left;
+}
+
+#map {
+background-color: #008200;
+background-image: url(../img/mid_bg.jpg);
+background-repeat: repeat-x;
+float: left;
+height: auto;
+margin: 0px 0px 0px 0px;
+padding: 10px 10px 10px 10px;
+width: auto;
+}
+
+#map #background{
+background-color:white;
+padding:10px 10px 10px 10px;
+}
+
+.input-column {
+background-color: white;
+border-bottom: 2px solid #CCC;
+border-left: 2px solid #666;
+border-right: 2px solid #CCC;
+border-top: 2px solid #666;
+margin-bottom: 5px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 5px;
+width:200px;
+}
+
+.input-button {
+background-color: #CCC;
+border-bottom-color: #666;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: #CCC;
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: #666;
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: #CCC;
+border-top-style: solid;
+border-top-width: 1px;
+margin-bottom: 5px;
+margin-left: 5px;
+margin-top: 5px;
+}
+
+.search-list {
+float:left;
+}
+
+.clear {
+clear: both;
+}
