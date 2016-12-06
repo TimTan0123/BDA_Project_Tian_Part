@@ -1,65 +1,10 @@
-$(function(){
-
-
-  function searchInformation() {
-    var lat = 40.809336;
-    var lng = -73.959855;
-    var radius = 500;
-    var data = {
-       "lat": lat, 
-       "lng": lng,
-       "radius":radius
-    };
-    data = $(this).serialize() + "&" + $.param(data);
-    $.ajax({
-	type: "POST",
-	dataType: "json",
-	data: data,
-	url: "google_places.php"
-	}).done(function(data) {
-          setDataMap(data['results']);
-	  
-	}).fail(function(data) {
-	}).always(function() {
-    });
-  }
-
-  function setDataMap(data) {
-    for (var i=0; i<data.length; i++) {
-      //places.push([ data[i][3], parseFloat(data[i][8]), parseFloat(data[i][9]), i ]);
-      //infoWindowContent.push([data[i][3], data[i][0]]);
-      if ( isNaN(data[i][8]) || isNaN(data[i][9]) || data[i][8] == undefined || data[i][9] == undefined || data[i][8] == null || data[i][9] == null || data[i][8] == '' || data[i][9] == '') {
-      } else {
-        heatmapData.push(new google.maps.LatLng(parseFloat(data[i][8]), parseFloat(data[i][9])) );
-      }
-    }
-    //places  0:title 1:lat 2:lng 3:index?
-    //infoWindowContent 1:description
-    setMarkers(map);
-  }
-
-  function setDataDanger(data) {
-    var citymap = {
-      chicago: {center: {lat: 41.878, lng: -87.629}, population: 2714856},
-      newyork: {center: {lat: 40.714, lng: -74.005}, population: 8405837},
-      losangeles: {center: {lat: 34.052, lng: -118.243}, population: 3857799},
-      vancouver: {center: {lat: 49.25, lng: -123.1}, population: 603502}
-    };
-  }
-
-});
-
 // global value
 var map;
 var heatmap;
 var heatmapData = [];
-
-// Data for the markers consisting of a name, a LatLng and a zIndex for the
-// order in which these markers should display on top of each other.
 var places = [];
-
-// i do not know why, but I have to set as follows
 var infoWindowContent = [];
+var server = 'http://127.0.0.1:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
@@ -86,13 +31,11 @@ function initMap() {
     }
   ];
 
-  // Create a new StyledMapType object, passing it the array of styles,
-  // as well as the name to be displayed on the map type control.
   var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
 
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: {lat: 40.809336, lng: -73.959855},
+    zoom: 14,
+    center: {lat: 40.440624, lng: -79.995888},
     mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
     }
@@ -100,7 +43,6 @@ function initMap() {
 
   map.mapTypes.set('map_style', styledMap);
   map.setMapTypeId('map_style');
-
 
   map.addListener('click', function(e) {
 /*
@@ -138,32 +80,96 @@ function initMap() {
 
 }
 
-function setTop5(data) {
-  $('#top1').text(data[0][0] + ' ' + data[0][1]);
-  $('#top2').text(data[1][0] + ' ' + data[1][1]);
-  $('#top3').text(data[2][0] + ' ' + data[2][1]);
-  $('#top4').text(data[3][0] + ' ' + data[3][1]);
-  $('#top5').text(data[4][0] + ' ' + data[4][1]);
-}
+$(document).ready(function () {
+  $("#keyword_search").click(function(){
+    detailClear();
+    var keyword = $("#keyword").val();
+    var link = server + "keyword/" + keyword
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: link,
+    }).done(function(data) {
+      console.log("done");
+      setDataMap(data);
+    }).fail(function(data) {
+      console.log("fail");
+      console.log(data);
+    }).always(function() {
+    });
+  });
+
+  $("#predict_rate").click(function(){
+    var business_id = $("#detail_business_id").text();
+    var link = server + "predict/" + business_id;
+    console.log(link);
+    var result = 3.6;
+    $('#detail_predict').text("In 6 months, the rating will be " + result);
+    /*
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: link,
+    }).done(function(data) {
+      console.log("done");
+      setDataMap(data);
+    }).fail(function(data) {
+      console.log("fail");
+      console.log(data);
+    }).always(function() {
+    });
+    */
+  });
+});
+
+
 
 function setMarkers(map) {
   var infoWindow = new google.maps.InfoWindow(), marker, i;
-  var pointArray = new google.maps.MVCArray(heatmapData);
 
-  heatmap = new google.maps.visualization.HeatmapLayer({
-    data: pointArray,
-    radius: 50
-  });
- 
-  // placing the heatmap on the map
-  heatmap.setMap(map);
+  for (i = 0; i < places.length; i++) {
+    let place = places[i];
+    let marker = new google.maps.Marker({
+      position: {lat: place[0], lng: place[1]},
+      map: map,
+      title: place[2]
+    });
+    
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        console.log(place);
+        infoWindow.setContent(infoWindowContent[i][0]);
+	infoWindow.open(map, marker);
+        setDetail(place);
+      }
+    })(marker, i));
+  }
 }
 
-$(document).ready(function () {
-    $(".mlink").click(function(){
-        var target = this.getAttribute('data-target');
-        $('html, body').animate({
-           scrollTop: $(target).offset().top-80
-        }, 800, 'easeOutCubic');
-    });
-});
+
+function detailClear() {
+  $('#detail_name').text("");
+  $('#detail_rate').text("");
+  $('#detail_business_id').text("");
+  $('#detail_predict').text("");
+}
+
+function setDetail(place) {
+  detailClear();
+  $('#detail_name').text(place[2]);
+  $('#detail_rate').text(place[3]);
+  $('#detail_business_id').text(place[4]);
+}
+
+function setDataMap(data) {
+  places = [];
+  infoWindow = [];
+  for (var i=0; i<data.length; i++) {
+    places.push([ parseFloat(data[i]['lat']), parseFloat(data[i]['lng']), data[i]['name'], data[i]['rate'], data[i]['business_id'] ]);
+    infoWindowContent.push([data[i]['name']]);
+  }
+  setMarkers(map);
+}
+
+
+

@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/index.html">TITLE</a>
+          <a class="navbar-brand" href="/index.html">Wow3 recommendar</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -39,7 +39,6 @@
 
     <div id="headerwrap">
       <div class="container">
-        <div class="info"><h1>TITLE</h1></div>
         <div class="row">
           <div class="col-lg-8 info2" id="map">
 
@@ -52,34 +51,33 @@
             <div class="row">
               <div class="col-lg-4"><h4>Keyword</h4></div>
               <div class="col-lg-8">
-                <input type="keyword" class="form-control" id="id_form_keyword" placeholder="Keyowrd">
+                <input type="keyword" class="form-control" id="keyword" placeholder="Keyowrd">
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-4"><h4>City</h4></div>
-              <div class="col-lg-8">
-                <select id="type" class="form-control">
-                  <option value="newyork">New York</option>
-                  <option value="sanfrancisco">San Francisco</option>
-                  <option value="seattle">Seattle</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-                <button id="filter" type="button" class="btn btn-info centered">Search</button>
+                <button id="keyword_search" type="button" class="btn btn-info centered">Search</button>
             </div>
             </div>
             <div class="myblock">
-            <p>
-            <h4>Top Restaurants Nearby</h4>
-            <ol>
-              <h4 class="text-left"><li id="top1"></li></h4>
-              <h4 class="text-left"><li id="top2"></li></h4>
-              <h4 class="text-left"><li id="top3"></li></h4>
-              <h4 class="text-left"><li id="top4"></li></h4>
-              <h4 class="text-left"><li id="top5"></li></h4>
-            <ol>
-            </p>
+            <div>
+              <div>
+                <div id="detail_business_id" style="display:none;"></div>
+                <div class="row">
+                  <div class="col-sm-4 whitecolor">Name:</div>
+                  <div class="col-sm-8 whitecolor" id="detail_name"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4 whitecolor">Rate:</div>
+                  <div class="col-sm-8 whitecolor" id="detail_rate"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4"><button id="predict_rate" type="button" class="btn btn-info centered">Predict</button></div>
+                  <div class="col-sm-8  whitecolor" id="detail_predict">
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div><! --/row -->

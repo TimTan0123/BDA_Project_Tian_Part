@@ -5,13 +5,23 @@ import argparse
 import re
 import cgi
 import json
+from keyword_func import keyword_search
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        if None != re.search('/get/*', self.path):
+        if None != re.search('/get/keyword/*', self.path):
+            k = self.path.split('/')[-1]
+            results = keyword_search(k, 'demo')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(results)
+        elif None != re.search('/get/place/*', self.path):
             textID = self.path.split('/')[-1]
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write("test")
         else:
@@ -48,7 +58,7 @@ class SimpleHttpServer():
  
 if __name__=='__main__': 
     server = SimpleHttpServer('0.0.0.0', 7777)
-    print 'HTTP Server Running...........'
+    print('HTTP Server Running...........')
     server.start()
     server.waitForThread()
 
