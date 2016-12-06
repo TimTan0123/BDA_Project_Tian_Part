@@ -4,7 +4,7 @@ var heatmap;
 var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
-var server = 'http://127.0.0.1:7777/get/';
+var server = 'http://104.198.177.69:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
@@ -83,6 +83,7 @@ function initMap() {
 $(document).ready(function () {
   $("#keyword_search").click(function(){
     detailClear();
+    $("#detail_panel").hide();
     var keyword = $("#keyword").val();
     var link = server + "keyword/" + keyword
     $.ajax({
@@ -120,6 +121,16 @@ $(document).ready(function () {
     });
     */
   });
+
+  $(".mlink").click(function(){
+    var target = this.getAttribute('data-target');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top-80
+      }, 800, 'easeOutCubic');
+  });
+
+  $("#detail_panel").hide();
+
 });
 
 
@@ -156,6 +167,7 @@ function detailClear() {
 
 function setDetail(place) {
   detailClear();
+  $("#detail_panel").show();
   $('#detail_name').text(place[2]);
   $('#detail_rate').text(place[3]);
   $('#detail_business_id').text(place[4]);
