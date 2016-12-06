@@ -35,8 +35,8 @@ $(function(){
   });
 
   function searchInformation() {
-    var lat = 40.809336;
-    var lng = -73.959855;
+    var lat = 40.440624;
+    var lng = -79.995888;
     var radius = 500;
     var data = {
        "lat": lat, 

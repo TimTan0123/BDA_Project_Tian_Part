@@ -18,15 +18,19 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(results)
         elif None != re.search('/get/place/*', self.path):
-            textID = self.path.split('/')[-1]
+            latlng = self.path.split('/')[-1]
+            lat = latlng.split('z')[0]
+            lng = latlng.split('z')[1]
+            results = keyword_search("test", 'demo')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            self.wfile.write("test")
+            self.wfile.write(results)
         else:
             self.send_response(403)
             self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
         return
  

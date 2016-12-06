@@ -4,7 +4,7 @@ var heatmap;
 var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
-var server = 'http://104.198.177.69:7777/get/';
+var server = 'http://127.0.0.1:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
@@ -43,40 +43,6 @@ function initMap() {
 
   map.mapTypes.set('map_style', styledMap);
   map.setMapTypeId('map_style');
-
-  map.addListener('click', function(e) {
-/*
-    var latlng = {lat: parseFloat(e['latLng']['H']), lng: parseFloat(e['latLng']['L'])};
-  geocoder.geocode({'location': latlng}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      if (results[1]) {
-          if (results[0]['address_components'][8]['short_name'] == 10026 || results[0]['address_components'][8]['short_name'] == 10027 || results[0]['address_components'][8]['short_name'] == 10013 || results[0]['address_components'][8]['short_name'] == 11216 || results[0]['address_components'][8]['short_name'] == 11365 )
-	    var data = {
-	       "zipcode": results[0]['address_components'][8]['short_name']
-               //"zipcode": 9999
-	    };
-	    data = $(this).serialize() + "&" + $.param(data);
-	    $.ajax({
-		type: "POST",
-		dataType: "json",
-		data: data,
-		url: "azure_top5.php"
-		}).done(function(data) {
-		  console.log(data);
-	          setTop5(data['Results']['output1']['value']['Values']);
-		}).fail(function(data) {
-	          console.log(data);
-		}).always(function() {
-	    });
-      } else {
-        window.alert('No results found');
-      }
-    } else {
-      window.alert('Geocoder failed due to: ' + status);
-    }
-   });
-*/
-  });
 
 }
 
@@ -120,6 +86,26 @@ $(document).ready(function () {
     }).always(function() {
     });
     */
+  });
+
+  $("#popular_search").click(function(){
+    detailClear();
+    $("#detail_panel").hide();
+    var lat = map.getCenter().lat();
+    var lng = map.getCenter().lng();
+    var link = server + "place/" + lat + "z" + lng
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: link,
+    }).done(function(data) {
+      console.log("done");
+      setDataMap(data);
+    }).fail(function(data) {
+      console.log("fail");
+      console.log(data);
+    }).always(function() {
+    });
   });
 
   $(".mlink").click(function(){
