@@ -15,5 +15,5 @@ if __name__=='__main__':
     sock.send(unique)
     reply = sock.recv(1024)
     sock.close()
-    with stdoutmutex:
-        print 'client got : [%s]' % reply
+    result = open(unique + '.json', 'r').read()
+    print result
