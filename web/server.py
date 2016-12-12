@@ -38,7 +38,18 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json')
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            self.wfile.write(results)            
+            self.wfile.write(results)
+        elif None != re.search('/get/all/*', self.path):
+            which = self.path.split('/')[-1]
+            if which == 'all':
+                results = open('all.json', 'r').read()
+            elif which == 'bars':
+                results = open('bars.json', 'r').read()
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(results)
         else:
             self.send_response(403)
             self.send_header('Content-Type', 'application/json')

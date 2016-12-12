@@ -5,6 +5,7 @@ var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
 var server = 'http://104.198.177.69:7777/get/';
+//var server = 'http://127.0.0.1:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
@@ -161,6 +162,44 @@ $(document).ready(function () {
     });
   });
 
+  $("#show_all").click(function(){
+    detailClear();
+    var link = server + 'all/all';
+    console.log(link);
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: link,
+    }).done(function(data) {
+      console.log("done");
+      console.log(data);
+      setDataMapAll(data);
+    }).fail(function(data) {
+      console.log("fail");
+      console.log(data);
+    }).always(function() {
+    });
+  });
+
+  $("#show_bars").click(function(){
+    detailClear();
+    var link = server + 'all/bars';
+    console.log(link);
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: link,
+    }).done(function(data) {
+      console.log("done");
+      console.log(data);
+      setDataMap2(data);
+    }).fail(function(data) {
+      console.log("fail");
+      console.log(data);
+    }).always(function() {
+    });
+  });
+
   $(".mlink").click(function(){
     var target = this.getAttribute('data-target');
       $('html, body').animate({
@@ -214,7 +253,30 @@ function setDataMap(data) {
   places = [];
   infoWindow = [];
   for (var i=0; i<data.length; i++) {
-    places.push([ parseFloat(data[i]['lat']), parseFloat(data[i]['lng']), data[i]['name'], data[i]['rate'], data[i]['business_id'] ]);
+    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
+    infoWindowContent.push([data[i]['name']]);
+  }
+  setMarkers(map);
+}
+
+function setDataMap2(data) {
+  places = [];
+  infoWindow = [];
+  for (var i=0; i<data.length; i++) {
+    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
+    infoWindowContent.push([data[i]['name']]);
+  }
+  setMarkers(map);
+}
+
+function setDataMapAll(data) {
+  places = [];
+  infoWindow = [];
+  for (var i=0; i<data.length; i++) {
+    if (data[i]['stars'] < 5) {
+      continue;
+    }
+    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
     infoWindowContent.push([data[i]['name']]);
   }
   setMarkers(map);
