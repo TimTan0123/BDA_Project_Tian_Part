@@ -199,7 +199,7 @@ function detailClear() {
   $('#detail_name').text("");
   $('#detail_rate').text("");
   $('#detail_business_id').text("");
-  //$('#detail_predict').text("");
+  $('#detail_predict').hide();
 }
 
 function setDetail(place) {
