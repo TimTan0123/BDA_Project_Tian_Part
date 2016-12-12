@@ -6,6 +6,7 @@ import re
 import cgi
 import json
 from keyword_func import keyword_search
+from predict_func import predict_rate
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -27,6 +28,17 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(results)
+        elif None != re.search('/get/predict/*', self.path):
+            business_id = self.path.split('/')[-1]
+            if business_id == '0':
+                results = predict_rate(business_id, 'demo')
+            else: 
+                results = predict_rate(business_id, '')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(results)            
         else:
             self.send_response(403)
             self.send_header('Content-Type', 'application/json')

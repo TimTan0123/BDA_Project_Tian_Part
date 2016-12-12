@@ -68,24 +68,77 @@ $(document).ready(function () {
 
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
-    var link = server + "predict/" + business_id;
+    //var link = server + "predict/" + business_id;
+    var link = server + "predict/0";
+    $("#detail_predict").css( "display", "block");
     console.log(link);
-    var result = 3.6;
-    $('#detail_predict').text("In 6 months, the rating will be " + result);
-    /*
     $.ajax({
       type: "GET",
       dataType: "json",
       url: link,
-    }).done(function(data) {
+    }).done(function(json_data) {
       console.log("done");
-      setDataMap(data);
+      var time_data = json_data[0];
+      var end_date = new Date(parseInt(json_data[1][0]), parseInt(json_data[1][1]));
+      var s_years = Object.keys(time_data).sort();
+      var array_actual = [];
+      var array_future = []; 
+      for(var i = 0; i < s_years.length; i++) {
+        if (s_years[i] in time_data) {
+          var s_months = Object.keys(time_data[s_years[i]]).sort();
+          for(var j = 0; j < s_months.length; j++) {
+            if (s_months[j] in time_data[s_years[i]]) {
+              tmp = {}
+              tmp['x'] = new Date(parseInt(s_years[i]), parseInt(s_months[j]));
+              tmp['y'] = parseFloat(time_data[s_years[i]][s_months[j]]);
+              if (tmp['x'].getTime() <= end_date.getTime()) {
+                array_actual.push(tmp);
+              } else {
+                array_future.push(tmp);
+              } 
+            }
+          }
+        }
+      }
+      var chart = new CanvasJS.Chart("chartContainer",
+      {
+        title:{
+          text: "Rate Prediction"
+        },
+        axisX:{
+          title: "Month",
+          gridThickness: 1
+        },
+        axisY: {
+          title: "Rate"
+        },
+        data: [
+          //{        
+          //  type: "area",
+          //  dataPoints: array_data
+          //}
+          {
+            type: "line", 
+            showInLegend: true,
+            name: "Actual",
+            dataPoints: array_actual
+          },
+          {        
+            type: "line", 
+            showInLegend: true,
+            name: "Future",
+            dataPoints: array_future
+          } 
+       ]
+      });
+      console.log(array_actual);
+            console.log(array_future);
+      chart.render();
     }).fail(function(data) {
       console.log("fail");
       console.log(data);
     }).always(function() {
     });
-    */
   });
 
   $("#popular_search").click(function(){
@@ -114,8 +167,6 @@ $(document).ready(function () {
         scrollTop: $(target).offset().top-80
       }, 800, 'easeOutCubic');
   });
-
-  $("#detail_panel").hide();
 
 });
 
@@ -148,7 +199,7 @@ function detailClear() {
   $('#detail_name').text("");
   $('#detail_rate').text("");
   $('#detail_business_id').text("");
-  $('#detail_predict').text("");
+  //$('#detail_predict').text("");
 }
 
 function setDetail(place) {
