@@ -70,7 +70,10 @@ $(document).ready(function () {
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
     //var link = server + "predict/" + business_id;
-    var link = server + "predict/0";
+    if(business_id != "wi2JCjaEob10YvC2TbTxhQ"){
+      business_id = "0";
+    }
+    var link = server + "predict/" + business_id;
     $("#detail_predict").css( "display", "block");
     console.log(link);
     $.ajax({
@@ -91,7 +94,7 @@ $(document).ready(function () {
             if (s_months[j] in time_data[s_years[i]]) {
               tmp = {}
               tmp['x'] = new Date(parseInt(s_years[i]), parseInt(s_months[j]));
-              tmp['y'] = parseFloat(time_data[s_years[i]][s_months[j]]);
+              tmp['y'] = 2.5 * (1 + parseFloat(time_data[s_years[i]][s_months[j]]));
               if (tmp['x'].getTime() <= end_date.getTime()) {
                 array_actual.push(tmp);
               } else {
@@ -111,7 +114,9 @@ $(document).ready(function () {
           gridThickness: 1
         },
         axisY: {
-          title: "Rate"
+          title: "Rate",
+          maximum: 5,
+          minimum: 0
         },
         data: [
           //{        
@@ -147,14 +152,15 @@ $(document).ready(function () {
     $("#detail_panel").hide();
     var lat = map.getCenter().lat();
     var lng = map.getCenter().lng();
-    var link = server + "place/" + lat + "z" + lng
+    //var link = server + "place/" + lat + "z" + lng
+    var link = server + 'all/all';
     $.ajax({
       type: "GET",
       dataType: "json",
       url: link,
     }).done(function(data) {
       console.log("done");
-      setDataMap(data);
+      setDataMapAll(data);
     }).fail(function(data) {
       console.log("fail");
       console.log(data);
@@ -274,6 +280,9 @@ function setDataMapAll(data) {
   infoWindow = [];
   for (var i=0; i<data.length; i++) {
     if (data[i]['stars'] < 5) {
+      continue;
+    }
+    if (Math.random() < 0.7) {
       continue;
     }
     places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
