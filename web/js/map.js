@@ -217,18 +217,21 @@ $(document).ready(function () {
 });
 
 
-
+var global_marker = [];
 function setMarkers(map) {
-  var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-  for (i = 0; i < places.length; i++) {
+  var infoWindow = new google.maps.InfoWindow();
+  for (var m = 0; m < global_marker.length; m++ ) {
+    global_marker[m].setMap(null);
+  }
+  global_marker = [];
+  for (var i = 0; i < places.length; i++) {
     let place = places[i];
     let marker = new google.maps.Marker({
       position: {lat: place[0], lng: place[1]},
       map: map,
       title: place[2]
     });
-    
+    global_marker.push(marker); 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
         console.log(place);

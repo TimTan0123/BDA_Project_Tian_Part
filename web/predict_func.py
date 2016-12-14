@@ -62,13 +62,6 @@ def prediction1(lat, lng):
 from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
-from gensim import corpora, models
-import gensim
-from os import path
-import matplotlib.pyplot as plt
-from PIL import Image
-import numpy as np
-from wordcloud import WordCloud, STOPWORDS
 
 def prediction2(search_word):
     tokenizer = RegexpTokenizer(r'\w+')
