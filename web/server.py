@@ -8,12 +8,21 @@ import json
 from keyword_func import keyword_search
 from predict_func import predict_rate
 from predict_func import prediction1
+from predict_func import prediction2
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if None != re.search('/get/keyword/*', self.path):
             k = self.path.split('/')[-1]
-            results = keyword_search(k, 'demo')
+            #results = keyword_search(k, 'demo')
+            if k == 'bar':
+                #results = keyword_search(k, 'demo') 
+                results = open('bars_ext.json', 'r').read()
+            else:
+                try:
+                    results = prediction2(k)
+                except:
+                    results = ""
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.send_header('Access-Control-Allow-Origin', '*')

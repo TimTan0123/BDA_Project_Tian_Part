@@ -59,7 +59,7 @@ $(document).ready(function () {
       url: link,
     }).done(function(data) {
       console.log("done");
-      setDataMap(data);
+      setDataMapPopular(data);
     }).fail(function(data) {
       console.log("fail");
       console.log(data);
