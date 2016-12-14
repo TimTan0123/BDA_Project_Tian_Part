@@ -7,6 +7,7 @@ import cgi
 import json
 from keyword_func import keyword_search
 from predict_func import predict_rate
+from predict_func import prediction1
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -22,7 +23,10 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             latlng = self.path.split('/')[-1]
             lat = latlng.split('z')[0]
             lng = latlng.split('z')[1]
-            results = keyword_search("test", 'demo')
+            try:
+                results = prediction1(float(lat), float(lng))
+            except:
+                results = ""
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.send_header('Access-Control-Allow-Origin', '*')

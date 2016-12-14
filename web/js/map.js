@@ -152,15 +152,16 @@ $(document).ready(function () {
     $("#detail_panel").hide();
     var lat = map.getCenter().lat();
     var lng = map.getCenter().lng();
-    //var link = server + "place/" + lat + "z" + lng
-    var link = server + 'all/all';
+    var link = server + "place/" + lat + "z" + lng
+    //var link = server + 'all/all';
     $.ajax({
       type: "GET",
       dataType: "json",
       url: link,
     }).done(function(data) {
       console.log("done");
-      setDataMapAll(data);
+      console.log(data);
+      setDataMapPopular(data);
     }).fail(function(data) {
       console.log("fail");
       console.log(data);
@@ -292,4 +293,12 @@ function setDataMapAll(data) {
 }
 
 
-
+function setDataMapPopular(data) {
+  places = [];
+  infoWindow = [];
+  for (var i in data) {
+    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
+    infoWindowContent.push([data[i]['name']]);
+  }
+  setMarkers(map);
+}

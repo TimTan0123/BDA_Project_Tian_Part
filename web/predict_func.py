@@ -1,5 +1,9 @@
 import csv
 import json
+from sklearn.neighbors import NearestNeighbors
+from sklearn.externals import joblib
+import pandas as pd
+import numpy as np
 
 path = '/home/hs2865/web2/travelcolumbia/algorithm/predict3/'
 
@@ -39,3 +43,18 @@ def predict_rate(business_id, mode):
 
         result = [data_list, last_date]
         return json.dumps(result) 
+
+def prediction1(lat, lng):
+    latitude = lat
+    longitude = lng    
+
+    weight =100
+    longitude *= weight
+    latitude *= weight
+    testX = [5,5,5,latitude,longitude]
+    prediction1 = joblib.load('prediction1.pkl') 
+    result = prediction1.kneighbors(testX)
+    knn_df_open_typ = pd.read_pickle("knn_df_open_typ")
+    output = knn_df_open_typ.iloc[result[1][0]]
+    return output.to_json(orient='index')
+
