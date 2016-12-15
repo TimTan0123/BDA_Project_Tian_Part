@@ -69,9 +69,8 @@ $(document).ready(function () {
 
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
-    //var link = server + "predict/" + business_id;
-    if(business_id != "wi2JCjaEob10YvC2TbTxhQ"){
-      business_id = "0";
+    if (!(business_id == '3LKcR-g6Ok3i5EtR_GkJQg' || business_id == 'wi2JCjaEob10YvC2TbTxhQ')) {
+      business_id = 0;
     }
     var link = server + "predict/" + business_id;
     $("#detail_predict").css( "display", "block");
@@ -94,7 +93,7 @@ $(document).ready(function () {
             if (s_months[j] in time_data[s_years[i]]) {
               tmp = {}
               tmp['x'] = new Date(parseInt(s_years[i]), parseInt(s_months[j]));
-              tmp['y'] = 2.5 * (1 + parseFloat(time_data[s_years[i]][s_months[j]]));
+              tmp['y'] = 2.5 * (1.0 + parseFloat(time_data[s_years[i]][s_months[j]]));
               if (tmp['x'].getTime() <= end_date.getTime()) {
                 array_actual.push(tmp);
               } else {
@@ -115,7 +114,7 @@ $(document).ready(function () {
         },
         axisY: {
           title: "Rate",
-          maximum: 5,
+          maximum: 5.5,
           minimum: 0
         },
         data: [
@@ -138,7 +137,7 @@ $(document).ready(function () {
        ]
       });
       console.log(array_actual);
-            console.log(array_future);
+      console.log(array_future);
       chart.render();
     }).fail(function(data) {
       console.log("fail");
@@ -223,9 +222,10 @@ function setMarkers(map) {
   for (var m = 0; m < global_marker.length; m++ ) {
     global_marker[m].setMap(null);
   }
-  global_marker = [];
-  for (var i = 0; i < places.length; i++) {
+  global_marker.length = 0;
+  for (let i = 0; i < places.length; i++) {
     let place = places[i];
+    //let infoWindow = new google.maps.InfoWindow();
     let marker = new google.maps.Marker({
       position: {lat: place[0], lng: place[1]},
       map: map,
@@ -234,7 +234,6 @@ function setMarkers(map) {
     global_marker.push(marker); 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
-        console.log(place);
         infoWindow.setContent(infoWindowContent[i][0]);
 	infoWindow.open(map, marker);
         setDetail(place);
@@ -261,7 +260,7 @@ function setDetail(place) {
 
 function setDataMap(data) {
   places = [];
-  infoWindow = [];
+  infoWindowContent = [];
   for (var i=0; i<data.length; i++) {
     places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
     infoWindowContent.push([data[i]['name']]);
@@ -271,7 +270,7 @@ function setDataMap(data) {
 
 function setDataMap2(data) {
   places = [];
-  infoWindow = [];
+  infoWindowContent = [];
   for (var i=0; i<data.length; i++) {
     places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
     infoWindowContent.push([data[i]['name']]);
@@ -281,7 +280,7 @@ function setDataMap2(data) {
 
 function setDataMapAll(data) {
   places = [];
-  infoWindow = [];
+  infoWindowContent = [];
   for (var i=0; i<data.length; i++) {
     if (data[i]['stars'] < 5) {
       continue;
@@ -298,7 +297,7 @@ function setDataMapAll(data) {
 
 function setDataMapPopular(data) {
   places = [];
-  infoWindow = [];
+  infoWindowContent = [];
   for (var i in data) {
     places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
     infoWindowContent.push([data[i]['name']]);

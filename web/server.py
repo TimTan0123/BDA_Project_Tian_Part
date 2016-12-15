@@ -15,7 +15,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
         if None != re.search('/get/keyword/*', self.path):
             k = self.path.split('/')[-1]
             #results = keyword_search(k, 'demo')
-            if k == 'bar':
+            if k == 'cafe':
                 #results = keyword_search(k, 'demo') 
                 results = open('bars_ext.json', 'r').read()
             else:
@@ -43,6 +43,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(results)
         elif None != re.search('/get/predict/*', self.path):
             business_id = self.path.split('/')[-1]
+            business_id = business_id.replace('-', '_')
             if business_id == '0':
                 results = predict_rate(business_id, 'demo')
             else: 
