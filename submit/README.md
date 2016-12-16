@@ -53,11 +53,10 @@
 
 ## Notification
 - Following file/directory are not submitted since the data sizes would be large
- - Excluded file/directory
-  - ./data/source/wow3_all_mysql.csv
-  - ./data/source/wow3_business_mysql.csv
-  - ./data/source/wow3_review_mysql.csv
-  - ./data/source/wow3_user_mysql.csv.csv  
-  - ./web/data/business_LDA.csv
-  - ./web/data/rate
+ - ./data/source/wow3_all_mysql.csv
+ - ./data/source/wow3_business_mysql.csv
+ - ./data/source/wow3_review_mysql.csv
+ - ./data/source/wow3_user_mysql.csv.csv  
+ - ./web/data/business_LDA.csv
+ - ./web/data/rate
  - If you run the web server, please prepare these data 
