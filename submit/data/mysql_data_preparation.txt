@@ -1,0 +1,209 @@
+### Specification ####
+- The review data is huge(around 1.8 GB) so the process takes time
+- I used innodb table with auto extend at MYSQL, since the data is huge
+
+
+### Create review table for importing
+drop table review;
+create table review(
+user_id varchar(30),
+review_id varchar(30),
+text text,
+votes_cool int,
+business_id varchar(30),
+votes_funny int,
+stars float,
+date varchar(30),
+type varchar(10),
+votes_useful int
+) 
+engine=InnoDB;
+
+LOAD DATA LOCAL INFILE 'yelp_academic_dataset_review.csv'
+INTO TABLE review FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+;
+
+
+### Create business table for importing
+drop table business;
+create table business(
+business_id varchar(30),
+name varchar(255),
+city varchar(100),
+latitude float,
+longitude float,
+stars float,
+review_count int,
+categories varchar(255),
+open varchar(10)
+) 
+engine=InnoDB;
+
+LOAD DATA LOCAL INFILE 'yelp_academic_dataset_business.csv'
+INTO TABLE business FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+;
+
+### Create user table for importing
+drop table user;
+create table user(
+yelping_since varchar(30),
+compliments_plain int,
+review_count int,
+friends text,
+compliments_cute int,
+compliments_writer int,
+fans int,
+compliments_note int,
+type varchar(10),
+compliments_hot int,
+compliments_cool int,
+compliments_profile int,
+average_stars float,
+compliments_more int, 
+elite varchar(255),
+name varchar(255),
+user_id varchar(30),
+votes_cool int,
+compliments_list int,
+votes_funny int,
+compliments_photos int,
+compliments_funny int,
+votes_useful int
+)
+engine=InnoDB;
+
+LOAD DATA LOCAL INFILE 'yelp_academic_dataset_user.csv'
+INTO TABLE user FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+;
+
+
+
+### Add index for better performance
+alter table business
+add primary key(business_id);
+
+alter table user
+add primary key(user_id);
+
+alter table review
+add primary key(review_id);
+
+alter table review
+add index business_id(business_id);
+
+alter table review
+add index user_id(user_id);
+
+
+### Prepare business data
+drop table business_ext;
+create table business_ext
+select 
+b.business_id, b.name, b.latitude, b.longitude,
+b.stars, b.review_count, b.categories, b.open
+from business b
+where b.city = 'Pittsburgh'
+;
+
+
+### Prepare review data
+drop table review_ext;
+create table review_ext
+select
+r.review_id, r.user_id, r.business_id, 
+r.stars, r.text, r.date, r.votes_funny, r.votes_useful
+from business_ext b
+left join review r 
+on b.business_id = r.business_id
+;
+
+
+### Prepare user data
+drop table user_ext;
+create table user_ext
+select
+u.user_id, u.review_count, u.average_stars,
+u.friends, u.fans, 
+u.votes_cool, u.votes_funny, u.votes_useful
+from user u
+where u.user_id in
+(select distinct(user_id) from review_ext)
+;
+
+
+### Make csv for business data
+select b.business_id, b.name, b.latitude, b.longitude,
+b.stars, replace(replace(b.categories, "'", ""), '"', ""), b.review_count, substring(b.open, 1, 1)
+from business_ext b
+into outfile 'wow3_business_mysql.csv'
+CHARACTER SET utf8 
+FIELDS TERMINATED BY ',' 
+optionally enclosed by '"'
+LINES TERMINATED BY '\n' ;
+
+
+### Make csv for user data
+select * from user_ext
+into outfile 'wow3_user_mysql.csv'
+fields terminated by ','
+optionally enclosed by '"'
+;
+
+
+### Make csv for review data
+select
+r.review_id, r.user_id, r.business_id, 
+r.stars, replace(replace(r.text, "\n", ""), '"', ''), r.date, r.votes_funny, r.votes_useful
+from review_ext r
+into outfile 'wow3_review_mysql.csv'
+fields terminated by ','
+optionally enclosed by '"'
+;
+
+
+### Add key for better performance
+alter table business_ext
+add primary key(business_id);
+
+alter table user_ext
+add primary key(user_id);
+
+alter table review_ext
+add primary key(review_id);
+
+alter table review_ext
+add index business_id(business_id);
+
+alter table review_ext
+add index user_id(user_id);
+
+
+### Output combine data
+select
+b.business_id, b.name,
+b.stars, b.review_count, replace(replace(b.categories, "'", ""), '"', ""), substring(b.open, 1, 1),
+r.review_id, r.stars, replace(replace(r.text, "\n", ""), '"', ''), r.date, r.votes_funny, r.votes_useful,
+u.user_id, u.review_count, u.average_stars,
+u.friends, u.fans
+from review_ext r
+left join business_ext b on b.business_id = r.business_id
+left join user_ext u on r.user_id = u.user_id
+into outfile 'wow3_all_mysql.csv'
+fields terminated by ','
+optionally enclosed by '"'
+;
+
+
+#### How to import data at python
+import pandas as pd
+
+user = pd.read_csv("wow3_user_mysql.csv", names = ["user_id", "review_count", "average_stars", "friends", "fans", "votes_cool", "votes_funny", "votes_useful"])
+
+business = pd.read_csv("wow3_business_mysql.csv", names = ["business_id", "name", "latitude", "longitude", "stars", "review_count", "categories", "open"])
+
+review = pd.read_csv("wow3_review_mysql.csv", names = ["review_id", "user_id", "business_id", "stars", "text", "date", "votes_funny", "votes_useful"])
+
+
+all = pd.read_csv("wow3_all_mysql.csv", names = ["business_id", "name", "stars_business", "business_review_count", "categories", "open", "review_id", "stars_review", "text", "date", "votes_funny", "votes_useful","user_id", "user_review_count", "average_stars","friends", "fans"])
+
+
