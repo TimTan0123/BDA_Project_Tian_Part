@@ -29,7 +29,7 @@
  - ./model/Prediction_func.ipynb
 
 ## Modeling
-
+Work in progress
 
 ## System G, Graph analysis
 - Script for inputting graph data
