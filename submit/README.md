@@ -1,9 +1,11 @@
 # Wow3 recommender
 
+
 ## Contents
 - Data Processing : ./data
 - Modeling : ./model
 - Web development : ./web
+
 
 ## Data Processing
 #### Overview
@@ -24,13 +26,16 @@
  - ./data/create_user_graph.py
   - We clean data so that they can use System G
 
+
 ## Modeling
+
 
 
 ## System G, Graph analysis
 - Script for inputting graph data
  - ./data/systemg.txt
   - We used to glemlin to input data, extract information, and visualize user graph
+
 
 
 ## Web development
@@ -50,6 +55,7 @@
 #### Others
 - Detail of the web page
  - https://docs.google.com/a/columbia.edu/presentation/d/1JtQtHJH4WoE8vhOSogcY_9nBZ71_7092mPD6085yAxQ/edit?usp=sharing
+
 
 ## Notification
 - Following file/directory are not submitted since the data sizes would be large
