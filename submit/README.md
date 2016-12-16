@@ -25,10 +25,10 @@
 - Script of creating a graph information of users for System G 
  - ./data/create_user_graph.py
   - We clean data so that they can use System G
-
+- Script of creating data used at web system
+ - ./model/Prediction_func.ipynb
 
 ## Modeling
-
 
 
 ## System G, Graph analysis
