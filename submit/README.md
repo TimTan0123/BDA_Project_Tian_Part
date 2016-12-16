@@ -47,5 +47,5 @@
 
 ## System G, Graph analysis
 - Script for inputting graph data
- - ./data/[mod later]
-  - We used to glemlin to input data and visualized user graph
+ - ./data/systemg.txt
+  - We used to glemlin to input data, extract information, and visualize user graph
