@@ -6,12 +6,14 @@
 - Web development : ./web
 
 ## Data Processing
+#### Overview
 - Data source is "Yelp Dataset Challenge" 
  - https://www.yelp.com/dataset_challenge
  - We decided to use following data sets
   -  Review data: yelp_academic_dataset_review.csv
   -  Business data: yelp_academic_dataset_business.csv
   -  User data: yelp_academic_dataset_user.csv
+#### Steps
 - Steps for loading and making clean data
  - ./data/mysql_data_preparation.txt
   - We used MYSQL and python to manipulate data
@@ -25,16 +27,18 @@
 
 
 ## Web development
+#### Overview
 - Codes for web system is stored at ./web/
  - We used Python, HTML, CSS(Bootstrap) and jQuery
-- How to set up web system
- - Start up python web server for port 8080
-  - $ twistd -no web --path=. &
- - Start up python web server for port 7777 (REST API)
-  - $ python server.py
-   - This is for REST API. REST API accepts GET request and return json
- - URL for the web service
-  - [mod later]
+#### How to set up web system
+- Start up python web server for port 8080
+ - $ twistd -no web --path=. &
+- Start up python web server for port 7777 (REST API)
+ - $ python server.py
+  - This is for REST API. REST API accepts GET request and return json
+- URL for the web service
+ - [mod later]
+#### Others
 - Detail of the web page
  - https://docs.google.com/a/columbia.edu/presentation/d/1JtQtHJH4WoE8vhOSogcY_9nBZ71_7092mPD6085yAxQ/edit?usp=sharing
 
