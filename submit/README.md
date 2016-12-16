@@ -30,7 +30,7 @@
 ## Web development
 #### Overview
 - Codes for web system is stored at ./web/
- - We used Python, HTML, CSS(Bootstrap) and jQuery
+ - We used Python, HTML, CSS(Bootstrap), JavaScript(jQuery, CanvasJS)
 
 #### How to set up web system
 - Start up python web server for port 8080
