@@ -12,15 +12,19 @@
    - Review data: yelp_academic_dataset_review.csv
    - Business data: yelp_academic_dataset_business.csv
    - User data: yelp_academic_dataset_user.csv
-- The step for loading and making clean data is written here
+- Steps for loading and making clean data
  - ~/data/mysql_data_preparation.txt
   - We used MYSQL and python to manipulate data
   - MYSQL has innodb storage engine. We added index key on the columns that are used for joining so that they can do join or select operation fast.
   - We output clean files in the format of CSV file
- 
+- Script of creating a graph information of users for System G 
+ - ~/data/create_user_graph.py
+  - We clean data so that they can use System G
 
 ## Modeling
 
 
 ## Web development
+
+## System G, Graph analysis
 
