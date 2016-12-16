@@ -25,9 +25,20 @@
 
 
 ## Web development
-
+- Codes for web system is stored at ~/web/
+ - We used Python, HTML, CSS(Bootstrap) and jQuery
+- How to set up web system
+ - Start up python web server for port 8080
+  - $ twistd -no web --path=. &
+ - Start up python web server for port 7777 (REST API)
+  - $ python server.py
+   - This is for REST API. REST API accepts GET request and return json
+ - URL for the web service
+  - [mod later]
+- Detail of the web page
+ - https://docs.google.com/a/columbia.edu/presentation/d/1JtQtHJH4WoE8vhOSogcY_9nBZ71_7092mPD6085yAxQ/edit?usp=sharing
 
 ## System G, Graph analysis
 - Script for inputting graph data
- - ~/data/xxxx
+ - ~/data/[mod later]
   - We used to glemlin to input data and visualized user graph
