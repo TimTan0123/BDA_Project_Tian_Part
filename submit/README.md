@@ -1,9 +1,9 @@
 # Wow3 recommender
 
 ## Contents
-- Data Processing : data
-- Modeling : model
-- Web development : web
+- Data Processing : ~/data
+- Modeling : ~/model
+- Web development : ~/web
 
 ## Data Processing
 - Data source is "Yelp Dataset Challenge" 
