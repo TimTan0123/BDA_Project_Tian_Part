@@ -9,9 +9,9 @@
 - Data source is "Yelp Dataset Challenge" 
  - https://www.yelp.com/dataset_challenge
   - We decided to use following data sets
-   - Review data: yelp_academic_dataset_review.csv
-   - Business data: yelp_academic_dataset_business.csv
-   - User data: yelp_academic_dataset_user.csv
+   -  Review data: yelp_academic_dataset_review.csv
+   -  Business data: yelp_academic_dataset_business.csv
+   -  User data: yelp_academic_dataset_user.csv
 - Steps for loading and making clean data
  - ./data/mysql_data_preparation.txt
   - We used MYSQL and python to manipulate data
