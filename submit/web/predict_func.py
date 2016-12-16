@@ -12,10 +12,10 @@ path = 'data/'
 
 def predict_rate(business_id, mode):
     actual = business_id + '_actual.csv'
-    actual_data = open(path + actual , 'r')
+    actual_data = open(path + 'rate/' + actual , 'r')
     actual_reader = csv.reader(actual_data)
     prediction = business_id + '_prediction.csv'
-    prediction_data = open(path + prediction , 'r')
+    prediction_data = open(path + 'rate/' + prediction , 'r')
     prediction_reader = csv.reader(prediction_data)
     data_list = {}
     last_date = []
