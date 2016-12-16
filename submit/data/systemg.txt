@@ -1,0 +1,13 @@
+#### Start up gremlin, input data
+./gremlin.sh
+gs = new TSGShell()
+gs.exec("delete --graph wow")
+gs.exec("create --graph wow --type undirected")
+gs.exec("load_csv_vertices --graph wow --csvfile /home/vagrant/wow3_user_node.csv --keypos 0 --labelpos 1")
+gs.exec("load_csv_edges --graph wow --csvfile /home/vagrant/wow3_user_edge.csv --srcpos 0 --targpos 1")
+
+#### Getting related information for user
+gs.exec("analytic_start_engine --graph wow")
+gs.exec("analytic_degree_centrality --graph wow --format vertexcsv --redirect degree.csv")
+gs.exec("analytic_betweenness_centrality --graph wow --format vertexcsv --redirect betweenness.csv")
+gs.exec("analytic_clustering_coefficient --graph wow --format vertexcsv --redirect coefficient.csv")
