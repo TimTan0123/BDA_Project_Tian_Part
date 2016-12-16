@@ -26,5 +26,8 @@
 
 ## Web development
 
-## System G, Graph analysis
 
+## System G, Graph analysis
+- Script for inputting graph data
+ - ~/data/xxxx
+  - We used to glemlin to input data and visualized user graph
