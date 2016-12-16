@@ -27,6 +27,12 @@
 ## Modeling
 
 
+## System G, Graph analysis
+- Script for inputting graph data
+ - ./data/systemg.txt
+  - We used to glemlin to input data, extract information, and visualize user graph
+
+
 ## Web development
 #### Overview
 - Codes for web system is stored at ./web/
@@ -45,7 +51,13 @@
 - Detail of the web page
  - https://docs.google.com/a/columbia.edu/presentation/d/1JtQtHJH4WoE8vhOSogcY_9nBZ71_7092mPD6085yAxQ/edit?usp=sharing
 
-## System G, Graph analysis
-- Script for inputting graph data
- - ./data/systemg.txt
-  - We used to glemlin to input data, extract information, and visualize user graph
+## Notification
+- Following file/directory are not submitted since the data sizes would be large
+ - Excluded file/directory
+  - ./data/source/wow3_all_mysql.csv
+  - ./data/source/wow3_business_mysql.csv
+  - ./data/source/wow3_review_mysql.csv
+  - ./data/source/wow3_user_mysql.csv.csv  
+  - ./web/data/business_LDA.csv
+  - ./web/data/rate
+ - If you run the web server, please prepare these data 
