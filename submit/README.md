@@ -66,6 +66,7 @@
  - ./web/data/business_LDA.csv
  - ./web/data/rate
  - If you run the web server, please prepare these data 
+
 #### Data download
 - ./data/source/wow3_all_mysql.csv
  - 
