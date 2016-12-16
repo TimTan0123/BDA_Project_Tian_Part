@@ -4,8 +4,7 @@ var heatmap;
 var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
-var server = 'http://104.198.177.69:7777/get/';
-//var server = 'http://127.0.0.1:7777/get/';
+var server = 'http://localhost:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
@@ -69,9 +68,6 @@ $(document).ready(function () {
 
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
-    if (!(business_id == '3LKcR-g6Ok3i5EtR_GkJQg' || business_id == 'wi2JCjaEob10YvC2TbTxhQ')) {
-      business_id = 0;
-    }
     var link = server + "predict/" + business_id;
     $("#detail_predict").css( "display", "block");
     console.log(link);
@@ -118,10 +114,6 @@ $(document).ready(function () {
           minimum: 0
         },
         data: [
-          //{        
-          //  type: "area",
-          //  dataPoints: array_data
-          //}
           {
             type: "line", 
             showInLegend: true,
@@ -136,8 +128,6 @@ $(document).ready(function () {
           } 
        ]
       });
-      console.log(array_actual);
-      console.log(array_future);
       chart.render();
     }).fail(function(data) {
       console.log("fail");
@@ -152,7 +142,6 @@ $(document).ready(function () {
     var lat = map.getCenter().lat();
     var lng = map.getCenter().lng();
     var link = server + "place/" + lat + "z" + lng
-    //var link = server + 'all/all';
     $.ajax({
       type: "GET",
       dataType: "json",
@@ -168,24 +157,6 @@ $(document).ready(function () {
     });
   });
 
-  $("#show_all").click(function(){
-    detailClear();
-    var link = server + 'all/all';
-    console.log(link);
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: link,
-    }).done(function(data) {
-      console.log("done");
-      console.log(data);
-      setDataMapAll(data);
-    }).fail(function(data) {
-      console.log("fail");
-      console.log(data);
-    }).always(function() {
-    });
-  });
 
   $("#show_bars").click(function(){
     detailClear();
@@ -225,7 +196,6 @@ function setMarkers(map) {
   global_marker.length = 0;
   for (let i = 0; i < places.length; i++) {
     let place = places[i];
-    //let infoWindow = new google.maps.InfoWindow();
     let marker = new google.maps.Marker({
       position: {lat: place[0], lng: place[1]},
       map: map,
@@ -258,36 +228,11 @@ function setDetail(place) {
   $('#detail_business_id').text(place[4]);
 }
 
-function setDataMap(data) {
-  places = [];
-  infoWindowContent = [];
-  for (var i=0; i<data.length; i++) {
-    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
-    infoWindowContent.push([data[i]['name']]);
-  }
-  setMarkers(map);
-}
 
 function setDataMap2(data) {
   places = [];
   infoWindowContent = [];
   for (var i=0; i<data.length; i++) {
-    places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
-    infoWindowContent.push([data[i]['name']]);
-  }
-  setMarkers(map);
-}
-
-function setDataMapAll(data) {
-  places = [];
-  infoWindowContent = [];
-  for (var i=0; i<data.length; i++) {
-    if (data[i]['stars'] < 5) {
-      continue;
-    }
-    if (Math.random() < 0.7) {
-      continue;
-    }
     places.push([ parseFloat(data[i]['latitude']), parseFloat(data[i]['longitude']), data[i]['name'], data[i]['stars'], data[i]['business_id'] ]);
     infoWindowContent.push([data[i]['name']]);
   }
