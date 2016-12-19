@@ -14,11 +14,17 @@ def predict_rate(business_id, mode):
         return json_data
     else:
         actual = business_id + '_actual.csv'
-        actual_data = open(path + actual , 'r')
+        try:
+            actual_data = open(path + actual , 'r')
+        except:
+            return ""
         actual_reader = csv.reader(actual_data)
 
         prediction = business_id + '_prediction.csv'
-        prediction_data = open(path + prediction , 'r')
+        try:
+            prediction_data = open(path + prediction , 'r')
+        except:
+            return ""
         prediction_reader = csv.reader(prediction_data)
 
         data_list = {}

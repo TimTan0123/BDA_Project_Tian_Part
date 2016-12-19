@@ -5,11 +5,9 @@ var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
 var server = 'http://104.154.117.206:7777/get/';
-//var server = 'http://127.0.0.1:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
-  // Create an array of styles.
   var styles = [
     {
       stylers: [
@@ -69,11 +67,11 @@ $(document).ready(function () {
 
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
-    if (!(business_id == '3LKcR-g6Ok3i5EtR_GkJQg' || business_id == 'wi2JCjaEob10YvC2TbTxhQ')) {
-      business_id = 0;
-    }
+    //if (!(business_id == '3LKcR-g6Ok3i5EtR_GkJQg' || business_id == 'wi2JCjaEob10YvC2TbTxhQ')) {
+    //  business_id = 0;
+    //}
     var link = server + "predict/" + business_id;
-    $("#detail_predict").css( "display", "block");
+    //$("#detail_predict").css( "display", "block");
     console.log(link);
     $.ajax({
       type: "GET",
@@ -81,6 +79,10 @@ $(document).ready(function () {
       url: link,
     }).done(function(json_data) {
       console.log("done");
+      if (json_data == "") {
+        alert("There are no enough data to predict future rating");
+      }
+      $("#detail_predict").css( "display", "block");
       var time_data = json_data[0];
       var end_date = new Date(parseInt(json_data[1][0]), parseInt(json_data[1][1]));
       var s_years = Object.keys(time_data).sort();
@@ -93,7 +95,8 @@ $(document).ready(function () {
             if (s_months[j] in time_data[s_years[i]]) {
               tmp = {}
               tmp['x'] = new Date(parseInt(s_years[i]), parseInt(s_months[j]));
-              tmp['y'] = 2.5 * (1.0 + parseFloat(time_data[s_years[i]][s_months[j]]));
+              //tmp['y'] = 2.5 * (1.0 + parseFloat(time_data[s_years[i]][s_months[j]]));
+              tmp['y'] = parseFloat(time_data[s_years[i]][s_months[j]]);
               if (tmp['x'].getTime() <= end_date.getTime()) {
                 array_actual.push(tmp);
               } else {
@@ -140,6 +143,7 @@ $(document).ready(function () {
       console.log(array_future);
       chart.render();
     }).fail(function(data) {
+      alert("There are no enough data to predict future rating");
       console.log("fail");
       console.log(data);
     }).always(function() {
@@ -156,6 +160,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       dataType: "json",
+
       url: link,
     }).done(function(data) {
       console.log("done");
