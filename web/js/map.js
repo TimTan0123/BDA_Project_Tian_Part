@@ -4,7 +4,7 @@ var heatmap;
 var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
-var server = 'http://104.198.177.69:7777/get/';
+var server = 'http://104.154.117.206:7777/get/';
 //var server = 'http://127.0.0.1:7777/get/';
 
 function initMap() {

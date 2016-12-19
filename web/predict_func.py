@@ -5,7 +5,7 @@ from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
 
-path = '/home/hs2865/web2/travelcolumbia/algorithm/predict3/'
+path = './data/'
 
 def predict_rate(business_id, mode):
     if mode == 'demo':
