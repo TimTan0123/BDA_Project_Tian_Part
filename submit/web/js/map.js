@@ -4,11 +4,10 @@ var heatmap;
 var heatmapData = [];
 var places = [];
 var infoWindowContent = [];
-var server = 'http://localhost:7777/get/';
+var server = 'http://104.198.177.69:7777/get/';
 
 function initMap() {
   var geocoder = new google.maps.Geocoder;
-  // Create an array of styles.
   var styles = [
     {
       stylers: [
@@ -69,14 +68,13 @@ $(document).ready(function () {
   $("#predict_rate").click(function(){
     var business_id = $("#detail_business_id").text();
     var link = server + "predict/" + business_id;
-    $("#detail_predict").css( "display", "block");
-    console.log(link);
     $.ajax({
       type: "GET",
       dataType: "json",
       url: link,
     }).done(function(json_data) {
       console.log("done");
+      $("#detail_predict").css( "display", "block");
       var time_data = json_data[0];
       var end_date = new Date(parseInt(json_data[1][0]), parseInt(json_data[1][1]));
       var s_years = Object.keys(time_data).sort();
@@ -89,7 +87,7 @@ $(document).ready(function () {
             if (s_months[j] in time_data[s_years[i]]) {
               tmp = {}
               tmp['x'] = new Date(parseInt(s_years[i]), parseInt(s_months[j]));
-              tmp['y'] = 2.5 * (1.0 + parseFloat(time_data[s_years[i]][s_months[j]]));
+              tmp['y'] = parseFloat(time_data[s_years[i]][s_months[j]]);
               if (tmp['x'].getTime() <= end_date.getTime()) {
                 array_actual.push(tmp);
               } else {
@@ -130,6 +128,7 @@ $(document).ready(function () {
       });
       chart.render();
     }).fail(function(data) {
+      alert("There are no enough data to predict future rating");
       console.log("fail");
       console.log(data);
     }).always(function() {
