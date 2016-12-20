@@ -1,5 +1,8 @@
 # Wow3 recommender
 
+Below is the demo website for our project.
+http://104.154.117.206:8080/index.html
+
 
 ## Contents
 - Data Processing : ./data
@@ -49,8 +52,8 @@ Work in progress
 - Start up python web server for port 7777 (REST API)
  - $ python server.py
   - This is for REST API. REST API accepts GET request and return json
-- URL for the web service
- - [mod later]
+- Modify the URL for your own environment at ./web/js/map.js
+ - var server = 'http://[your_server_address]:7777/get/';
 
 #### Others
 - Detail of the web page
@@ -79,4 +82,4 @@ Work in progress
 - ./web/data/business_LDA.csv
  - https://drive.google.com/open?id=0B0MVyAAOEEwhZHVzNG5fa1lENGM
 - ./web/data/rate
- - 
+ - https://drive.google.com/drive/folders/0B0MVyAAOEEwhdGxaT09SVVYwVVU?usp=sharing
