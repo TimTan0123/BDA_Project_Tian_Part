@@ -1,5 +1,8 @@
 # Wow3 recommender
 
+Below is the demo website for our project.
+http://104.154.117.206:8080/index.html
+
 
 ## Contents
 - Data Processing : ./data
@@ -49,8 +52,6 @@ Work in progress
 - Start up python web server for port 7777 (REST API)
  - $ python server.py
   - This is for REST API. REST API accepts GET request and return json
-- URL for the web service
- - [mod later]
 
 #### Others
 - Detail of the web page
