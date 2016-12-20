@@ -79,4 +79,4 @@ Work in progress
 - ./web/data/business_LDA.csv
  - https://drive.google.com/open?id=0B0MVyAAOEEwhZHVzNG5fa1lENGM
 - ./web/data/rate
- - 
+ - https://drive.google.com/drive/folders/0B0MVyAAOEEwhdGxaT09SVVYwVVU?usp=sharing
