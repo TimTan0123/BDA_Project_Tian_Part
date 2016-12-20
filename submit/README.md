@@ -52,6 +52,8 @@ Work in progress
 - Start up python web server for port 7777 (REST API)
  - $ python server.py
   - This is for REST API. REST API accepts GET request and return json
+- Modify the URL for your own environment at ./web/js/map.js
+ - var server = 'http://[your_server_address]:7777/get/';
 
 #### Others
 - Detail of the web page
